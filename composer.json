@@ -1,0 +1,17 @@
+{
+    "name": "jk/jkfeedback",
+    "authors": [
+        {
+            "name": "jk",
+            "email": "strel.jk.93@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "application/"
+        }
+    }
+}
