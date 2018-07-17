@@ -35,10 +35,11 @@ gulp.task('jsLib', function () {
         .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('watch', ['sass', 'jsLib', 'jsApp'], function () {
+gulp.task('watch', function () {
     gulp.watch('assets/sass/**/*.+(sass|scss)', ['sass']);
     gulp.watch('assets/sass/**/*.js', ['jsLib']);
     gulp.watch('assets/js/**/*.js', ['jsApp']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series(['sass', 'jsLib', 'jsApp', 'watch']));
+// gulp.task('default', ['watch']);
