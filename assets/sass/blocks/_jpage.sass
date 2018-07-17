@@ -1,0 +1,15 @@
+.jpage
+    display: flex
+    flex-direction: row
+    &__sidenav
+        flex: 2
+    &__content
+        flex: 5
+        padding: 50px 60px
+        overflow-y: scroll 
+
+@media only screen and (max-width: $tabletBreakpoint)
+    .jpage
+        flex-direction: column
+        &__content
+            padding: 5px 15px

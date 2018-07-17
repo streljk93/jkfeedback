@@ -1,0 +1,140 @@
+// vars
+$mobileBreakpoint: 320px
+$tabletBreakpoint: 768px
+$computerBreakpoint: 992px
+$largeMonitorBreakpoint: 1280px
+$widescreenMonitorBreakpoint: 1920px
+
+$border-radius: 3px
+$font-size-base: 1.1rem
+$font-size-title: 1.2rem
+
+$shadow-inner: inset 0 15px 20px -10px rgba(0,0,0,0.25), inset 0 -15px 20px -10px rgba(0,0,0,0.25)
+$shadow-outer-bottom: 0 10px 20px rgba(0,0,0,.19)
+$shadow-material-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+$shadow-material-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+$shadow-material-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+$shadow-material-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+$shadow-material-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+
+// colors
+// semantic ui
+$jcolor-grey: #CCCCCC
+$jcolor-black: #1B1C1D
+$jcolor-yellow: #F2C61F
+$jcolor-teal: #00B5AD
+$jcolor-red: #D95C5C
+$jcolor-purple: #564F8A
+$jcolor-pink: #D9499A
+$jcolor-orange: #E07B53
+$jcolor-green: #5BBD72
+$jcolor-blue: #3B83C0
+
+// template
+$jcolor-primary: #F4F4F4
+$jcolor-accent: $jcolor-red
+$jcolor-secondary: $jcolor-teal 
+$jcolor-light: #F2F4F5
+$jcolor-white: #FFFFFF
+
+@import "libs"
+@import "fonts"
+@import "elements"
+@import "media-hidden"
+
+@import "blocks/jpage-login"
+@import "blocks/jpage"
+@import "blocks/jsidenav"
+@import "blocks/jlogo"
+@import "blocks/jcontent"
+@import "blocks/jtopbar"
+@import "blocks/jlists"
+@import "blocks/jlist"
+@import "blocks/jpagination"
+
+*:focus
+    outline: none
+
+*::-webkit-input-placeholder
+    color: #666
+    opacity: 1
+
+*:-moz-placeholder
+    color: #666
+    opacity: 1
+
+*::-moz-placeholder
+    color: #666
+    opacity: 1
+
+*:-ms-input-placeholder
+    color: #666
+    opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+    color: #666
+body input:required:valid,
+body textarea:required:valid
+    color: #666
+
+
+.ui .menu, .ui .button, .ui .card, .ui .list
+    font-size: $font-size-base
+
+body
+    margin: 0
+    padding: 0
+    overflow-x: hidden
+    min-width: 320px
+    background: #fff
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif
+    font-size: $font-size-base
+    line-height: 1.4285em
+    color: rgba(0, 0, 0, 0.84)
+    font-smoothing: antialiased
+
+.jcolor-primary
+    color: $jcolor-primary
+.jcolor-accent
+    color: $jcolor-accent
+.jcolor-secondary
+    color: $jcolor-secondary
+.jcolor-light
+    color: $jcolor-light
+.jcolor-white
+    color: $jcolor-white
+
+.jbackground-primary
+    background-color: $jcolor-primary !important
+.jbackground-accent
+    background-color: $jcolor-accent !important
+.jbackground-secondary
+    background-color: $jcolor-secondary !important
+.jbackground-light
+    background-color: $jcolor-light !important
+.jbackground-white
+    background-color: $jcolor-white !important
+
+.jcolor-white
+    color: $jcolor-white !important
+.jcolor-grey
+    color: $jcolor-grey !important
+.jcolor-black
+    color: $jcolor-black !important
+.jcolor-yellow
+    color: $jcolor-yellow !important
+.jcolor-teal
+    color: $jcolor-teal !important
+.jcolor-red
+    color: $jcolor-red !important
+.jcolor-purple
+    color: $jcolor-purple !important
+.jcolor-pink
+    color: $jcolor-pink !important
+.jcolor-orange
+    color: $jcolor-orange !important
+.jcolor-green
+    color: $jcolor-green !important
+.jcolor-blue
+    color: $jcolor-blue !important

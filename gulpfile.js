@@ -9,6 +9,8 @@ gulp.task('sass', function () {
     return gulp.src('assets/sass/main.sass')
         .pipe(sass())
         .pipe(autoprefixer())
+        .pipe(gulp.dest('public/css'))
+        .pipe(rename('main.min.css'))
         .pipe(gulp.dest('public/css'));
 });
 

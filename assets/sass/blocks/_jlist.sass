@@ -1,0 +1,37 @@
+.jlist
+    display: flex
+    flex-direction: row
+    &__icon
+        padding: 25px
+    &__icon-img
+        width: 70px
+    &__content
+        display: flex
+        flex-direction: row
+        flex: 1
+        margin: 0 !important
+    &__smile
+        padding-right: 20px
+    &__smile-img
+        width: 40px
+    &__message
+        display: flex
+        flex-direction: column
+        flex: 1
+    &__title
+        font-weight: bold
+        font-size: 1.1rem
+    &__description
+
+@media only screen and (max-width: $tabletBreakpoint)
+    .jlist
+        flex-direction: column
+        &__icon
+            padding: 10px !important
+            text-align: center !important
+            background: $jcolor-primary
+            position: relative
+            top: 2px
+        &__icon-img
+            border-radius: 0 !important
+            display: inline-block !important
