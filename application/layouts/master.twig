@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div class="jpage">
+
+        <!-- SIDENAV -->
+        <div class="jpage__sidenav jsidenav">
+            <div class="jsidenav__logo">
+                <div class="jlogo">
+                    <p><img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png" class="ui image jlogo__img" /></p>
+                    <div>Strelnikov Evgenii</div>
+                </div>
+            </div>
+            <div class="jsidenav__menu">
+                <div class="ui secondary vertical pointing large menu fluid">
+                    <a class="active item">
+                        View All Feedback
+                    </a>
+                    <a class="item">
+                        Write Feedback
+                    </a>
+                    <a class="item">
+                        About Me
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- SIDENAV END -->
+
+        <!-- MAIN CONTENT -->
+        {% block content %}{% endblock %}
+        <!-- MAIN CONTENT END -->
+
+    </div>
+
+    <script src="js/lib.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

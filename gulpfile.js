@@ -15,7 +15,11 @@ gulp.task('sass', function () {
 });
 
 gulp.task('jsApp', function () {
-    return gulp.src('assets/js/**/*.js')
+    return gulp.src([
+            'assets/js/app.js',
+            'assets/js/services/**/*.js',
+            'assets/js/controllers/**/*.js',
+        ])
         .pipe(concat('app.js'))
         .pipe(gulp.dest('public/js'))
         .pipe(rename('app.min.js'))
@@ -25,6 +29,7 @@ gulp.task('jsApp', function () {
 
 gulp.task('jsLib', function () {
     return gulp.src([
+            'node_modules/whatwg-fetch/fetch.js',
             'node_modules/jquery/dist/jquery.js',
             'node_modules/semantic-ui-css/semantic.js',
 

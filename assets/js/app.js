@@ -1,0 +1,4 @@
+var application = {
+    controllers: {},
+    services: {},
+};

@@ -1,0 +1,27 @@
+{% extends 'login.twig' %}
+
+{% block content %}
+<div class="jpage-login" id="js-sign-in">
+
+    <div class="jpage-login__logo">
+        Sign In
+    </div>
+    <div class="jpage-login__form ui segment">
+        <form class="ui form">
+            <div class="field">
+                <label>Email</label>
+                <input type="text" name="email" placeholder="Your email name ...">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="text" name="password" placeholder="Your password ...">
+            </div>
+            <button class="ui primary fluid button" type="submit" style="margin-bottom: 15px;">
+                Sign In
+            </button>
+            <a href="{{ base_url() }}/signup" class="ui fluid button">Sign Up</a>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,12 +1,13 @@
 <?php
 
-// HTTP
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-
 // Controllers
-use \Application\Modules\Login\LoginController;
+use \Application\Login\LoginController;
 
 $login = new LoginController();
 
-$app->get('/index', $login->index());
+// Main routes
+$app->get('/signin', $login->signin());
+$app->get('/signup', $login->signup());
+
+// Api routes
+$app->post('/api/v1/signin', $login->loginAjax());
