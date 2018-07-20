@@ -1,0 +1,57 @@
+{% extends 'master.twig' %}
+
+{% block content %}
+    <!-- MAIN CONTENT -->
+    <div class="jpage__content jcontent">
+        <div class="jcontent__topbar jtopbar">
+            <div class="ui stackable secondary menu">
+                <div class="item">
+                    <div class="jtopbar__title">
+                        View All Feedback
+                    </div>
+                </div>
+                <div class="right menu">
+                    <div class="item">
+                        <div class="ui icon input">
+                            <input type="text" placeholder="Search...">
+                            <i class="search link icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jcontent__block">
+            <div class="jlists">
+
+                <div class="jlists__item jlist">
+                    <div class="jlist__icon">
+                        <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png" class="ui media circular image jlist__icon-img">
+                    </div>
+                    <div class="jlist__content ui segment">
+                        <div class="jlist__smile">
+                            <img src="http://www.iconarchive.com/download/i97030/iconsmind/outline/Smile.ico" class="ui image jlist__smile-img">
+                        </div>
+                        <div class="jlist__message">
+                            <div class="jlist__title">
+                                Strelnikov Evgenii
+                            </div>
+                            <div class="jlist__description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, temporibus molestiae facere illo, perspiciatis dolorem in cupiditate ipsam iste doloribus rem, eaque porro qui voluptatum fuga hic libero aliquam deserunt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="jpagination">
+                <div class="jpagination__prev">
+                    <button class="ui button">Prev</button>
+                </div>
+                <div class="jpagination__next">
+                    <button class="ui button">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT END -->
+{% endblock %}
