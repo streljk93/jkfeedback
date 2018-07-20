@@ -12,7 +12,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "application/modules/"
+            "Modules\\": "application/modules/",
+            "Middlewares\\": "application/middlewares/"
         }
     }
 }

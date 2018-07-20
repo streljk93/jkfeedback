@@ -1,6 +1,6 @@
 <?php
 
 // Middlewares
-use \Application\Middlewares\Database;
+use \Middlewares\Database;
 
 $app->add(new Database());
