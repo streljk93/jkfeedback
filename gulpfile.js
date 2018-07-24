@@ -17,6 +17,7 @@ gulp.task('sass', function () {
 gulp.task('jsApp', function () {
     return gulp.src([
             'assets/js/app.js',
+            'assets/js/config.js',
             'assets/js/services/**/*.js',
             'assets/js/controllers/**/*.js',
         ])
@@ -31,6 +32,7 @@ gulp.task('jsLib', function () {
     return gulp.src([
             'node_modules/whatwg-fetch/fetch.js',
             'node_modules/jquery/dist/jquery.js',
+            'node_modules/jquery-mask-plugin/dist/jquery.mask.js',
             'node_modules/semantic-ui-css/semantic.js',
 
             'assets/sass/**/*.js',

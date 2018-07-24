@@ -1,32 +1,51 @@
 var application = {
     controllers: {},
     services: {},
+    config: {},
 };
-application.services.login = {
+(function () {
 
-    signin: function (data) {
-        return fetch(location.origin + '/api/v1/signin', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    },
+    window.application.config = {
+        base: {
+            url: location.origin + '/',
+        },
+        api: {
+            url: location.origin + '/api/v1/',
+        },
+    };
 
-    signup: function (data) {
-        return fetch(location.origin + '/api/v1/signup', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    },
+})();
 
-};
+(function (config) {
+    window.application.services.login = {
+
+        signin: function (data) {
+            return fetch(config.api.url + 'signin', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+            });
+        },
+
+        signup: function (data) {
+            return fetch(config.api.url + 'signup', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+            });
+        },
+
+    };
+})(application.config);
+
 // Sign in
-(function (LoginService) {
+(function (config, LoginService) {
 
     var signin = document.querySelector('#js-sign-in');
     if (!signin) return;
@@ -40,17 +59,39 @@ application.services.login = {
             username: form.querySelector('input[name=email]').value,
             password: form.querySelector('input[name=password]').value,
         }).then(function (response) {
-            console.log(response);
+            return response.json();
+        }).then(function (data) {
+            if (data.success) {
+                $('#js-message-success').dimmer('show');
+                setTimeout(function () {
+                    $('#js-message-success').dimmer('hide');
+                    location = config.base.url;
+                }, 3000);
+            } else {
+                $('#js-message-errors').dimmer('show');
+
+                // output errors
+                var errors = '<ul>';
+                data.errors.map(function (error) {
+                    errors += '<li>' + error + '</li>';
+                });
+                errors += '</ul>';
+                signin.querySelector('#js-message-errors').querySelector('.sub.header').innerHTML = errors;
+            }
         });
     };
 
-})(application.services.login);
+})(
+    application.config,
+    application.services.login
+);
 
 // Sign up
-(function (LoginService) {
+(function (config, LoginService) {
+    var signup = document.querySelector('#js-sign-up');
+    if (!signup) return;
 
     // vars
-    var signup = document.querySelector('#js-sign-up');
     var form = signup.querySelector('form');
     var username = signup.querySelector('input[name=username]');
     var email = signup.querySelector('input[name=email]');
@@ -65,8 +106,7 @@ application.services.login = {
         password: '',
         passwordRepeat: '',
     };
-
-    if (!signup) return;
+    $('input[name=phone]').mask('(000) 000-00-00');
 
     // initialize vars
     submit.disabled = true;
@@ -128,6 +168,17 @@ application.services.login = {
 
         var value = action.target.value;
 
+        if (value.length > 0) {
+            var phone = parseInt(value, 10);
+            if (!isNaN(phone) && value.length === 10) {
+                deleteError('phone');
+            } else {
+                setError('phone');
+            }
+        } else {
+            deleteError('phone');
+        }
+
         data['phone'] = value;
         activateSubmit();
     };
@@ -165,11 +216,35 @@ application.services.login = {
     form.onsubmit = function (event) {
         event.preventDefault();
 
+        submit.disabled = true;
         LoginService.signup(data).then(function (response) {
             return response.json();
-        }).then(function (json) {
-            console.log(json);
+        }).then(function (data) {
+            if (data.success) {
+                $('#js-message-success').dimmer('show');
+                setTimeout(function () {
+                    $('#js-message-success').dimmer('hide');
+                    location = config.base.url + 'signin';
+                }, 3000);
+            } else {
+                submit.disabled = false;
+                $('#js-message-errors').dimmer('show');
+
+                // output errors
+                var errors = '<ul>';
+                data.errors.map(function (error) {
+                    errors += '<li>' + error + '</li>';
+                });
+                errors += '</ul>';
+                signup.querySelector('#js-message-errors').querySelector('.sub.header').innerHTML = errors;
+            }
+        }).catch(function (error) {
+            submit.disabled = false;
+            $('#js-message-error').dimmer('show');
         });
     };
 
-})(application.services.login);
+})(
+    application.config,
+    application.services.login
+);

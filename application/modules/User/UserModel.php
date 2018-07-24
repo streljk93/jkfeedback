@@ -44,10 +44,10 @@ class UserModel
 
     public function validate()
     {
-        $this->validateUsername() || $this->result->setErrors('Username already exists!');
-        $this->validateEmail() || $this->result->setErrors('Email already exists!');
-        $this->validatePhone() || $this->result->setErrors('Number Phone is wrong!');
-        $this->validatePassword() || $this->result->setErrors('Low secure of password! Password must be at least 8 letter.');
+        $this->validateUsername() || $this->result->setError('Username already exists!');
+        $this->validateEmail() || $this->result->setError('Email already exists!');
+        $this->validatePhone() || $this->result->setError('Number Phone is wrong!');
+        $this->validatePassword() || $this->result->setError('Low secure of password! Password must be at least 8 letter.');
         return $this;
     }
 
@@ -75,7 +75,7 @@ class UserModel
 
     private function validatePhone()
     {
-        return strlen($this->phone) === 10 && is_numeric($this->phone);
+        return true;
     }
 
     private function validatePassword()

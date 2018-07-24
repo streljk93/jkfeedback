@@ -19,12 +19,15 @@
                 <label>Email</label>
                 <input type="text" name="email" placeholder="Your email ..." value="">
                 <div class="ui pointing red label hidden">
-                    Phone is wrong!
+                    Email is wrong!
                 </div>
             </div>
             <div class="field">
                 <label>Phone</label>
                 <input type="text" name="phone" placeholder="Your phone ..." value="">
+                <div class="ui pointing red label hidden">
+                    Phone is wrong!
+                </div>
             </div>
             <div class="field">
                 <label>Password</label>
@@ -40,11 +43,37 @@
                     Password-repeat must be match password (above)!
                 </div>
             </div>
-            <button class="ui primary fluid button" type="submit" style="margin-bottom: 15px;">
-                Registration
-            </button>
-            <a href="{{ base_url() }}/signin" class="ui fluid button">Back</a>
+            <div class="field">
+                <button class="ui primary fluid button" type="submit" style="margin-bottom: 15px;">
+                    Registration
+                </button>
+                <a href="{{ base_url() }}/signin" class="ui fluid button">Back</a>
+            </div>
         </form>
+        <div class="ui dimmer" id="js-message-success">
+            <div class="content">
+                <h2 class="ui inverted icon header">
+                    <i class="thumbs up outline green icon"></i>
+                    <div class="jcolor-green">
+                        Success
+                        <div class="sub header">
+                            You was registered!
+                        </div>
+                    </div>
+                </h2>
+            </div>
+        </div>
+        <div class="ui dimmer" id="js-message-errors">
+            <div class="content">
+                <h2 class="ui inverted icon header">
+                    <i class="thumbs down outline red icon"></i>
+                    <div class="jcolor-red">
+                        Error
+                        <div class="sub header left aligned"></div>
+                    </div>
+                </h2>
+            </div>
+        </div>
     </div>
 
 </div>

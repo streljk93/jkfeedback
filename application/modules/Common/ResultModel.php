@@ -7,7 +7,7 @@ class ResultModel
 
     private $info = [];
 
-    private $success = [];
+    private $success = false;
 
     private $errors = [];
 
@@ -28,6 +28,7 @@ class ResultModel
 
     public function setSuccess($success)
     {
+        if ($success) $this->errors = [];
         $this->success = $success;
     }
 
@@ -41,7 +42,7 @@ class ResultModel
         return count($this->errors) > 0;
     }
 
-    public function setErrors($error)
+    public function setError($error)
     {
         $this->errors[] = $error;
     }

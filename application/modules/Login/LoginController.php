@@ -27,9 +27,12 @@ class LoginController {
         return function (Request $request, Response $response) {
             $data = $request->getParsedBody();
 
-            return $response->withJson([
-                'success' => true,
-            ]);
+            $message = (new LoginModel($request->getAttribute('db')))
+                ->withUsername($data['username'])
+                ->withPassword($data['password'])
+                ->signin();
+
+            return $response->withJson($message->jsonSerialize());
         };
     }
 

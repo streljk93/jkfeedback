@@ -21,6 +21,30 @@
             </button>
             <a href="{{ base_url() }}/signup" class="ui fluid button">Sign Up</a>
         </form>
+        <div class="ui dimmer" id="js-message-success">
+            <div class="content">
+                <h2 class="ui inverted icon header">
+                    <i class="thumbs up outline green icon"></i>
+                    <div class="jcolor-green">
+                        Success
+                        <div class="sub header">
+                            You was registered!
+                        </div>
+                    </div>
+                </h2>
+            </div>
+        </div>
+        <div class="ui dimmer" id="js-message-errors">
+            <div class="content">
+                <h2 class="ui inverted icon header">
+                    <i class="thumbs down outline red icon"></i>
+                    <div class="jcolor-red">
+                        Error
+                        <div class="sub header left aligned"></div>
+                    </div>
+                </h2>
+            </div>
+        </div>
     </div>
 
 </div>

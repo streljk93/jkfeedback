@@ -1,23 +1,27 @@
-application.services.login = {
+(function (config) {
+    window.application.services.login = {
 
-    signin: function (data) {
-        return fetch(location.origin + '/api/v1/signin', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    },
+        signin: function (data) {
+            return fetch(config.api.url + 'signin', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+            });
+        },
 
-    signup: function (data) {
-        return fetch(location.origin + '/api/v1/signup', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    },
+        signup: function (data) {
+            return fetch(config.api.url + 'signup', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+            });
+        },
 
-};
+    };
+})(application.config);

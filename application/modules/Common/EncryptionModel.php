@@ -25,7 +25,7 @@ class EncryptionModel
 
     public function decrypt($text)
     {
-        return \hex2bin($this->crypt->decrypt($text));
+        return $this->crypt->decrypt(\hex2bin($text));
     }
     
 }
