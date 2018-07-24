@@ -1,7 +1,7 @@
 {% extends 'login.twig' %}
 
 {% block content %}
-<div class="jpage-login">
+<div class="jpage-login" id="js-sign-up">
 
     <div class="jpage-login__logo">
         Sign Up
@@ -10,23 +10,35 @@
         <form class="ui form">
             <div class="field">
                 <label>User name</label>
-                <input type="text" name="username" placeholder="Your user name ...">
+                <input type="text" name="username" placeholder="Your user name ..." value="">
+                <div class="ui pointing red label hidden">
+                    Username is compulsory field for fill!
+                </div>
             </div>
             <div class="field">
                 <label>Email</label>
-                <input type="text" name="email" placeholder="Your email ...">
+                <input type="text" name="email" placeholder="Your email ..." value="">
+                <div class="ui pointing red label hidden">
+                    Phone is wrong!
+                </div>
             </div>
             <div class="field">
                 <label>Phone</label>
-                <input type="text" name="phone" placeholder="Your phone ...">
+                <input type="text" name="phone" placeholder="Your phone ..." value="">
             </div>
             <div class="field">
                 <label>Password</label>
-                <input type="text" name="password" placeholder="Your password ...">
+                <input type="password" name="password" placeholder="Your password ..." value="">
+                <div class="ui pointing red label hidden">
+                    Password is wrong! Must be not least 8 letter!
+                </div>
             </div>
             <div class="field">
                 <label>Repeat password</label>
-                <input type="text" name="password-repeat" placeholder="Repeat password ...">
+                <input type="password" name="password-repeat" placeholder="Repeat password ..." value="">
+                <div class="ui pointing red label hidden">
+                    Password-repeat must be match password (above)!
+                </div>
             </div>
             <button class="ui primary fluid button" type="submit" style="margin-bottom: 15px;">
                 Registration

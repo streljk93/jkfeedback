@@ -2,17 +2,20 @@
 
 namespace Middlewares;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 class Database {
 
     public function connect()
     {
-        $this->db = new \PDO('mysql:host=localhost;dbname=jkfeedback;', 'root', '13771993');
-        return $this->db;
+        return new \PDO('mysql:host=localhost;dbname=jkfeedback;', 'root', '13771993');
     }
 
-    public function __invoke($request, $response, $next)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
-        $this->connect();
+        $db = $this->connect();
+        $request = $request->withAttribute('db', $db);
         return $next($request, $response);
     }
 

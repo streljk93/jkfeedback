@@ -10,4 +10,14 @@ application.services.login = {
         });
     },
 
+    signup: function (data) {
+        return fetch(location.origin + '/api/v1/signup', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    },
+
 };
