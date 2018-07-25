@@ -1,3 +1,6 @@
+'use strict';
+
+// Service Login
 (function (config) {
     window.application.services.login = {
 

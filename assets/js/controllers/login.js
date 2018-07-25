@@ -1,3 +1,5 @@
+'use strict';
+
 // Sign in
 (function (config, LoginService) {
 
@@ -20,7 +22,7 @@
                 setTimeout(function () {
                     $('#js-message-success').dimmer('hide');
                     location = config.base.url;
-                }, 3000);
+                }, 2000);
             } else {
                 $('#js-message-errors').dimmer('show');
 
@@ -123,8 +125,7 @@
         var value = action.target.value;
 
         if (value.length > 0) {
-            var phone = parseInt(value, 10);
-            if (!isNaN(phone) && value.length === 10) {
+            if (value.length === 15) {
                 deleteError('phone');
             } else {
                 setError('phone');
@@ -179,7 +180,7 @@
                 setTimeout(function () {
                     $('#js-message-success').dimmer('hide');
                     location = config.base.url + 'signin';
-                }, 3000);
+                }, 2000);
             } else {
                 submit.disabled = false;
                 $('#js-message-errors').dimmer('show');

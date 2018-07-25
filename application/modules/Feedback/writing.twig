@@ -1,0 +1,102 @@
+{% extends 'master.twig' %}
+
+{% block content %}
+    <!-- MAIN CONTENT -->
+    <div class="jpage__content jcontent" id="js-feedback-writing">
+        <div class="jcontent__topbar jtopbar">
+            <div class="ui stackable secondary menu">
+                <div class="item">
+                    <div class="jtopbar__title">
+                        Write Feedback
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jcontent__block">
+            <form class="ui form">
+                <div class="field">
+                    <label>Username</label>
+                    <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name ..."
+                            value="{{ user.username }}"
+                            disabled
+                    />
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input
+                            type="text"
+                            name="email"
+                            placeholder="Your email ..."
+                            value="{{ user.email }}"
+                            disabled
+                    />
+                </div>
+                <div class="field">
+                    <label>Phone</label>
+                    <input
+                            type="text"
+                            name="phone"
+                            placeholder="Your phone ..."
+                            value="{{ user.phone }}"
+                            disabled
+                    />
+                </div>
+                <div class="field" id="js-field-message">
+                    <label>Message</label>
+                    <div class="ui pointing below red label">
+                        Message must have 1 and more letter!
+                    </div>
+                    <textarea></textarea>
+                </div>
+                <div class="field">
+                    <label>How would you rate the service?</label>
+                    <div class="ui radio checkbox" style="margin-right: 15px;">
+                        <input type="radio" name="rate" value="good" checked="checked">
+                        <label>Good</label>
+                    </div>
+                    <div class="ui radio checkbox" style="margin-right: 15px;">
+                        <input type="radio" name="rate" value="normally">
+                        <label>Normally</label>
+                    </div>
+                    <div class="ui radio checkbox" style="margin-right: 15px;">
+                        <input type="radio" name="rate" value="bad">
+                        <label>Bad</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div id="g-recaptcha"></div>
+                </div>
+                <button class="ui button" type="submit">SEND</button>
+            </form>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
+        </div>
+        <div class="ui dimmer" id="js-message-success">
+            <div class="content">
+                <h2 class="ui inverted icon header">
+                    <i class="thumbs up outline green icon"></i>
+                    <div class="jcolor-green">
+                        Success
+                        <div class="sub header">
+                            Your message was record
+                        </div>
+                    </div>
+                </h2>
+            </div>
+        </div>
+        <div class="ui dimmer" id="js-message-errors">
+            <div class="content">
+                <h2 class="ui inverted icon header">
+                    <i class="thumbs down outline red icon"></i>
+                    <div class="jcolor-red">
+                        Error
+                        <div class="sub header left aligned"></div>
+                    </div>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT END -->
+{% endblock %}

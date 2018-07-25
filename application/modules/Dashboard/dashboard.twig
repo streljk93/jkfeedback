@@ -23,24 +23,35 @@
         <div class="jcontent__block">
             <div class="jlists">
 
-                <div class="jlists__item jlist">
-                    <div class="jlist__icon">
-                        <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png" class="ui media circular image jlist__icon-img">
-                    </div>
-                    <div class="jlist__content ui segment">
-                        <div class="jlist__smile">
-                            <img src="http://www.iconarchive.com/download/i97030/iconsmind/outline/Smile.ico" class="ui image jlist__smile-img">
+                {% for feedback in feedbacks %}
+                    <div class="jlists__item jlist">
+                        <div class="jlist__icon">
+                            <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png" class="ui media circular image jlist__icon-img">
                         </div>
-                        <div class="jlist__message">
-                            <div class="jlist__title">
-                                Strelnikov Evgenii
+                        <div class="jlist__content ui segment">
+                            <div class="jlist__smile">
+                                {#<img src="http://www.iconarchive.com/download/i97030/iconsmind/outline/Smile.ico" class="ui image jlist__smile-img">#}
+                                {% if feedback.rate == 'good' %}
+                                    <i class="thumbs up outline icon" style="font-size: 30px;"></i>
+                                {% endif %}
+                                {% if feedback.rate == 'normally' %}
+                                    <i class="hand spock outline icon" style="font-size: 30px;"></i>
+                                {% endif %}
+                                {% if feedback.rate == 'bad' %}
+                                    <i class="thumbs down outline icon" style="font-size: 30px;"></i>
+                                {% endif %}
                             </div>
-                            <div class="jlist__description">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, temporibus molestiae facere illo, perspiciatis dolorem in cupiditate ipsam iste doloribus rem, eaque porro qui voluptatum fuga hic libero aliquam deserunt.
+                            <div class="jlist__message">
+                                <div class="jlist__title">
+                                    {{ feedback.username }}
+                                </div>
+                                <div class="jlist__description">
+                                    {{ feedback.message }}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
 
             </div>
             <div class="jpagination">

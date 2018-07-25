@@ -27,7 +27,7 @@ class LoginController {
         return function (Request $request, Response $response) {
             $data = $request->getParsedBody();
 
-            $message = (new LoginModel($request->getAttribute('db')))
+            $message = (new LoginModel($this->db))
                 ->withUsername($data['username'])
                 ->withPassword($data['password'])
                 ->signin();
@@ -41,12 +41,30 @@ class LoginController {
         return function (Request $request, Response $response) {
 
             // make
-            $message = (new UserModel($request->getAttribute('db')))
+            $message = (new UserModel($this->db))
                 ->setUser($request->getParsedBody())
                 ->validate()
                 ->createUser();
 
             return $response->withJson($message->jsonSerialize());
+        };
+    }
+
+    public function signout()
+    {
+        return function (Request $request, Response $response) {
+            $_SESSION = [];
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+            session_destroy();
+
+            header('Location: signin');
+            exit;
         };
     }
 

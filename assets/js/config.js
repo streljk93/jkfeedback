@@ -1,3 +1,6 @@
+'use strict';
+
+// config
 (function () {
 
     window.application.config = {

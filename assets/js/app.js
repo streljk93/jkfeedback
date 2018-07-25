@@ -1,5 +1,13 @@
-var application = {
-    controllers: {},
-    services: {},
-    config: {},
-};
+'use strict';
+
+// application
+(function (global) {
+
+    global.application = {
+        controllers: {},
+        services: {},
+        config: {},
+    };
+
+})(window);
+

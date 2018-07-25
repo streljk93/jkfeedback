@@ -10,7 +10,7 @@ class LoginModel {
 
     private $connect = null;
 
-    public $result = null;
+    private $result = null;
 
     private $crypt = null;
 
@@ -97,6 +97,12 @@ class LoginModel {
             header("Location: {$to}");
             exit;
         }
+        return $this;
+    }
+
+    public function getResult()
+    {
+        return $this->result;
     }
 
 }

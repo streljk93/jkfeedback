@@ -9,9 +9,9 @@ gulp.task('sass', function () {
     return gulp.src('assets/sass/main.sass')
         .pipe(sass())
         .pipe(autoprefixer())
-        .pipe(gulp.dest('public/css'))
+        .pipe(gulp.dest('public_html/css'))
         .pipe(rename('main.min.css'))
-        .pipe(gulp.dest('public/css'));
+        .pipe(gulp.dest('public_html/css'));
 });
 
 gulp.task('jsApp', function () {
@@ -22,10 +22,10 @@ gulp.task('jsApp', function () {
             'assets/js/controllers/**/*.js',
         ])
         .pipe(concat('app.js'))
-        .pipe(gulp.dest('public/js'))
+        .pipe(gulp.dest('public_html/js'))
         .pipe(rename('app.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest('public_html/js'));
 });
 
 gulp.task('jsLib', function () {
@@ -38,10 +38,10 @@ gulp.task('jsLib', function () {
             'assets/sass/**/*.js',
         ])
         .pipe(concat('lib.js'))
-        .pipe(gulp.dest('public/js'))
+        .pipe(gulp.dest('public_html/js'))
         .pipe(rename('lib.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest('public_html/js'));
 });
 
 gulp.task('watch', function () {
