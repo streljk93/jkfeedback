@@ -67,7 +67,7 @@ class MediaModel
             return $this->result;
         }
 
-        $this->result->setInfo('http://test.jkfeedback.ru/uploads/'. $filename);
+        $this->result->setInfo("http://{$_SERVER['SERVER_NAME']}/uploads/{$filename}");
         $this->result->setSuccess(true);
         return $this->result;
 

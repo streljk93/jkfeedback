@@ -59,6 +59,8 @@ class FeedbackModel
             $this->result->setSuccess(true);
         }
 
+        $this->result->setSuccess(true);
+
         return clone $this;
     }
 
