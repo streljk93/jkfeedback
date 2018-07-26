@@ -97,7 +97,7 @@ class FeedbackModel
     public function getAll()
     {
         $query = $this->connect->query("
-            SELECT `user`.`username`, `feedback`.`message`, `feedback`.`rate`
+            SELECT `user`.`username`, `user`.`avatar`, `feedback`.`message`, `feedback`.`rate`
             FROM `feedback`
             JOIN `user` ON `user`.`id` = `feedback`.`user_id`
             WHERE `user`.`isactive` = 1
@@ -122,6 +122,7 @@ class FeedbackModel
     private function makeFeedback($feedback)
     {
         return [
+            'avatar' => $feedback['avatar'],
             'username' => $this->crypt->decrypt($feedback['username']),
             'message' => $feedback['message'],
             'rate' => $feedback['rate'],
