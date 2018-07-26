@@ -108,6 +108,8 @@
                 var binary = e.target.result;
                 cropperImage.src = binary;
                 cropper = new Cropper(cropperImage, {
+                    // minContainerWidth: 700,
+                    // minContainerHeight: 300,
                     dragCrop: false,
                     autoCropArea: 0,
                     highlight: false,
@@ -120,6 +122,9 @@
                     autoCrop: true,
                     cropBoxMovable: true,
                     aspectRatio: 1 / 1,
+                });
+                setTimeout(function () {
+                    $(modal).modal('show');
                 });
                 $(modal).modal('show');
 
