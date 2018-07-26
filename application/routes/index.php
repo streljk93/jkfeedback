@@ -4,6 +4,7 @@
 $login = new \Modules\Login\LoginController();
 $dashboard = new \Modules\Dashboard\DashboardController();
 $feedback = new \Modules\Feedback\FeedbackController();
+$media = new \Modules\Media\MediaController();
 
 // base routes
 $app->get('/signin', $login->signinView());
@@ -16,4 +17,4 @@ $app->get('/write-feedback', $feedback->writingView());
 $app->post('/api/v1/signin', $login->signinAjax());
 $app->post('/api/v1/signup', $login->signupAjax());
 $app->post('/api/v1/feedback', $feedback->writingAjax());
-
+$app->post('/api/v1/media', $media->upload());

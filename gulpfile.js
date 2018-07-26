@@ -34,6 +34,7 @@ gulp.task('jsLib', function () {
             'node_modules/jquery/dist/jquery.js',
             'node_modules/jquery-mask-plugin/dist/jquery.mask.js',
             'node_modules/semantic-ui-css/semantic.js',
+            'node_modules/cropperjs/dist/cropper.js',
 
             'assets/sass/**/*.js',
         ])

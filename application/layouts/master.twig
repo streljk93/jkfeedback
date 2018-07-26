@@ -4,6 +4,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
 </head>
 <body>
 
@@ -13,7 +14,7 @@
         <div class="jpage__sidenav jsidenav">
             <div class="jsidenav__logo">
                 <div class="jlogo">
-                    <p><img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png" class="ui image jlogo__img" /></p>
+                    <p><img src="{{ user.avatar }}" class="ui image jlogo__img" /></p>
                     <div>{{ user.username }}</div>
                 </div>
             </div>

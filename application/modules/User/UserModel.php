@@ -14,6 +14,8 @@ class UserModel
 
     private $crypt = null;
 
+    private $avatar = null;
+
     private $username;
 
     private $email;
@@ -38,17 +40,24 @@ class UserModel
         $this->email = htmlspecialchars(addslashes($data['email'])) ?? '';
         $this->phone = htmlspecialchars(addslashes($data['phone'])) ?? null;
         $this->password = htmlspecialchars(addslashes($data['password'])) ?? '';
+        $this->avatar = htmlspecialchars(addslashes($data['avatar'])) ?? '';
 
         return $this;
     }
 
     public function validate()
     {
+        $this->validateAvatar() || $this->result->setError('Avatar is wrong!');
         $this->validateUsername() || $this->result->setError('Username already exists!');
         $this->validateEmail() || $this->result->setError('Email already exists!');
         $this->validatePhone() || $this->result->setError('Number Phone is wrong!');
         $this->validatePassword() || $this->result->setError('Low secure of password! Password must be at least 8 letter.');
         return $this;
+    }
+
+    private function validateAvatar()
+    {
+        return true;
     }
 
     private function validateUsername()
@@ -88,13 +97,14 @@ class UserModel
         if ($this->result->hasErrors()) return $this->result;
 
         $statement = $this->connect->prepare("
-            INSERT INTO `user` (username, email, phone, password)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO `user` (avatar, username, email, phone, password)
+            VALUES (?, ?, ?, ?, ?)
         ");
-        $statement->bindParam(1, $this->crypt->encrypt($this->username));
-        $statement->bindParam(2, $this->crypt->encrypt($this->email));
-        $statement->bindParam(3, $this->crypt->encrypt($this->phone));
-        $statement->bindParam(4, $this->crypt->encrypt($this->password));
+        $statement->bindParam(1, $this->avatar);
+        $statement->bindParam(2, $this->crypt->encrypt($this->username));
+        $statement->bindParam(3, $this->crypt->encrypt($this->email));
+        $statement->bindParam(4, $this->crypt->encrypt($this->phone));
+        $statement->bindParam(5, $this->crypt->encrypt($this->password));
         $statement->execute();
         if ($statement->rowCount() > 0) {
             $this->result->setSuccess(true);

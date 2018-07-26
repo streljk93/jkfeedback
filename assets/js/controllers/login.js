@@ -43,12 +43,18 @@
 );
 
 // Sign up
-(function (config, LoginService) {
+(function (config, LoginService, MediaService) {
     var signup = document.querySelector('#js-sign-up');
     if (!signup) return;
 
     // vars
     var form = signup.querySelector('form');
+    var modal = signup.querySelector('.ui.modal');
+    var modalSave = modal.querySelector('#js-cropper-save');
+    var modalCancel = modal.querySelector('#js-cropper-cancel');
+    var upload = signup.querySelector('#js-upload-file');
+    var cropper = null;
+    var cropperImage = signup.querySelector('#js-cropper-image');
     var username = signup.querySelector('input[name=username]');
     var email = signup.querySelector('input[name=email]');
     var phone = signup.querySelector('input[name=phone]');
@@ -56,6 +62,7 @@
     var passwordRepeat = signup.querySelector('input[name=password-repeat]');
     var submit = signup.querySelector('button[type=submit]');
     var data = {
+        avatar: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png',
         username: '',
         email: '',
         phone: '',
@@ -90,6 +97,57 @@
         });
         errors.push(error);
     };
+
+    // actions
+    // upload file
+    upload.addEventListener('change', function (event) {
+        if (event.target.files && event.target.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+
+                var binary = e.target.result;
+                cropperImage.src = binary;
+                cropper = new Cropper(cropperImage, {
+                    dragCrop: false,
+                    autoCropArea: 0,
+                    highlight: false,
+                    zoomable: false,
+                    checkCrossOrigin: false,
+                    modal: true,
+                    guides: true,
+                    center: true,
+                    background: true,
+                    autoCrop: true,
+                    cropBoxMovable: true,
+                    aspectRatio: 1 / 1,
+                });
+                $(modal).modal('show');
+
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    });
+
+    // cropper save
+    modalSave.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (cropper.getCroppedCanvas()) {
+            cropper.getCroppedCanvas().toBlob(function (blob) {
+                var file = new File([blob], 'file');
+                var formData = new FormData();
+                formData.append('userfile', file)
+
+                MediaService.upload(formData).then(function (response) {
+                    return response.json();
+                }).then(function (response) {
+                    if (response.success) {
+                        data.avatar = response.info;
+                    }
+                });
+            });
+        }
+    });
 
     // validate username
     username.oninput = function (action) {
@@ -201,5 +259,6 @@
 
 })(
     application.config,
-    application.services.login
+    application.services.login,
+    application.services.media
 );

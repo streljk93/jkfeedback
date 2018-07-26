@@ -72,6 +72,7 @@ class LoginModel {
     {
         return [
             'id' => $data['id'],
+            'avatar' => $data['avatar'],
             'username' => $this->crypt->decrypt($data['username']),
             'email' => $this->crypt->decrypt($data['email']),
             'phone' => $this->crypt->decrypt($data['phone']),

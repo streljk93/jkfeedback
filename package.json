@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cropperjs": "^1.4.1",
     "jquery": "^3.3.1",
     "jquery-mask-plugin": "^1.14.15",
     "semantic-ui-css": "^2.3.3",
